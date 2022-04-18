@@ -1,0 +1,28 @@
+{
+  "name": "master-list",
+  "version": "0.1.0",
+  "main": "index.ts",
+  "scripts": {
+    "start": "ts-node ./main.ts",
+    "start:no-check": "TS_NODE_FILES=true TS_NODE_TRANSPILE_ONLY=true ts-node ./main.ts",
+    "serve": "node ./dist/main.js",
+    "build": "tsc -b --verbose"
+  },
+  "author": "Caine Rotherham",
+  "license": "ISC",
+  "dependencies": {
+    "master-list": "git://github.com/zeyber/master-list.git",
+    "master-list-anki-provider": "git://github.com/zeyber/master-list-anki-provider.git",
+    "master-list-facebook-provider": "git://github.com/zeyber/master-list-facebook-provider.git",
+    "master-list-github-provider": "git://github.com/zeyber/master-list-github-provider.git",
+    "master-list-google-provider": "git://github.com/zeyber/master-list-google-provider.git",
+    "master-list-instagram-provider": "git://github.com/zeyber/master-list-instagram-provider.git",
+    "master-list-system-provider": "git://github.com/zeyber/master-list-system-provider.git",
+    "master-list-tinder-provider": "git://github.com/zeyber/master-list-tinder-provider.git",
+    "master-list-whatsapp-provider": "git://github.com/zeyber/master-list-whatsapp-provider.git"
+  },
+  "devDependencies": {
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.4"
+  }
+}
