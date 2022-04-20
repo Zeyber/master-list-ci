@@ -3,7 +3,7 @@ require("dotenv").config();
 import { providerConfig } from "./config";
 import { colours } from "./colors";
 import { CHECKMARK, DIVIDER } from "./input";
-import { getBrowser, Provider } from "master-list";
+import { Provider } from "@master-list/core";
 
 const providers: Provider[] = Object.values(providerConfig);
 
@@ -20,17 +20,15 @@ async function start() {
 
 async function initialize() {
   console.log("MASTER LIST INITIALIZING...");
-  const browser = await getBrowser();
+
+  // const browser = await getBrowser();
 
   for (const provider of providers) {
-    // Reuse manager browser if undefined
-    provider.options["browser"] = provider.options.useIsolatedBrowser
-      ? undefined
-      : browser;
+    // provider.options["browser"] = browser; // Reuse manager browser
 
-    console.log(`Initializing Provider ${provider.settings.providerName}`);
+    console.log(`Initializing ${provider.settings.providerName}`);
     await provider.initialize();
-    console.log(`${provider.settings.providerName} Provider Initialized`);
+    console.log(`${provider.settings.providerName} Initialized`);
   }
 }
 
