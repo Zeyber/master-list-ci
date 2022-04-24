@@ -1,9 +1,8 @@
 require("dotenv").config();
 
-import { providerConfig } from "./config";
-import { colours } from "./colors";
-import { CHECKMARK, DIVIDER } from "./input";
 import { Provider } from "@master-list/core";
+import { providerConfig } from "../setup";
+import { CHECKMARK, colours, DIVIDER } from "./utils";
 
 const providers: Provider[] = Object.values(providerConfig);
 

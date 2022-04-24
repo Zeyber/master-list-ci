@@ -1,23 +1,19 @@
 {
-  "name": "master-list-printer",
+  "name": "master-list",
   "version": "0.1.0",
   "main": "index.ts",
   "scripts": {
     "start": "ts-node ./src/main.ts",
     "start:no-check": "TS_NODE_FILES=true TS_NODE_TRANSPILE_ONLY=true ts-node ./src/main.ts",
     "serve": "node ./dist/main.js",
-    "build": "tsc"
+    "build": "tsc",
+    "prepublish": "npm run build"
   },
+  "types": "dist/index.d.ts",
   "author": "Caine Rotherham",
   "license": "ISC",
   "dependencies": {
-    "@master-list/core": "^0.1.0",
-    "@zeyber/master-list-anki-provider": "^0.1.0",
-    "@zeyber/master-list-facebook-provider": "^0.1.0",
-    "@zeyber/master-list-github-provider": "^0.1.0",
-    "@zeyber/master-list-google-provider": "^0.1.0",
-    "@zeyber/master-list-instagram-provider": "^0.1.0",
-    "@zeyber/master-list-system-provider": "^0.1.0"
+    "@master-list/core": "^0.1.0"
   },
   "devDependencies": {
     "ts-node": "^9.1.1",

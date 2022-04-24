@@ -1,3 +1,8 @@
+export const CTRL_C = "\u0003";
+export const ESC = "\u001B";
+export const CHECKMARK = "\u2713";
+export const RETURN = "\u000D";
+export const DIVIDER = "~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
 export const colours = {
   reset: "\x1b[0m",
   bright: "\x1b[1m",
@@ -16,7 +21,7 @@ export const colours = {
     magenta: "\x1b[35m",
     cyan: "\x1b[36m",
     white: "\x1b[37m",
-    crimson: "\x1b[38m", // Scarlet
+    crimson: "\x1b[38m",
   },
   bg: {
     black: "\x1b[40m",
