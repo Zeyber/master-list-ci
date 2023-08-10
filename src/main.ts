@@ -1,74 +1,40 @@
 require("dotenv").config();
 
-import { Provider } from "@master-list/core";
-import { providerConfig } from "../setup";
-import { CHECKMARK, colours, DIVIDER } from "./utils";
+import settings from "../settings.json";
 
-const providers: Provider[] = Object.values(providerConfig);
+const ONE_MINUTE = 60000;
+const RELOAD_DATA_TIME = ONE_MINUTE * 2;
+const feedData = [];
 
 async function start() {
-  await initialize();
-  loop();
-
-  async function loop() {
-    await reload();
-    print();
-    setTimeout(() => loop(), Number.parseInt(process.env.PRINTER_REFRESH_TIME));
-  }
-}
-
-async function initialize() {
-  console.log("MASTER LIST INITIALIZING...");
-
-  // const browser = await getBrowser();
-
-  for (const provider of providers) {
-    // provider.options["browser"] = browser; // Reuse manager browser
-
-    console.log(`Initializing ${provider.settings.providerName}`);
-    await provider.initialize();
-    console.log(`${provider.settings.providerName} Initialized`);
-  }
-}
-
-async function reload() {
-  console.log("Reloading...");
-  for (const provider of providers) {
-    await provider.reload();
-  }
+	setInterval(() => {
+		reload();
+	}, ONE_MINUTE);
+	reload();
 }
 
 function print() {
-  console.clear();
-
-  for (const provider of providers) {
-    printItems(provider);
-  }
+	console.clear();
+	const date = new Date();
+	console.log(date.toLocaleString());
+	console.log(feedData);
 }
 
-/**
- * Print loaded items.
- */
-function printItems(provider: Provider) {
-  let toPrint: string = "";
-  toPrint += DIVIDER + "\n";
-  if (provider.items?.length) {
-    toPrint += `${provider.settings.providerName} (${provider.items.length})`;
-    provider.items.forEach((item) => {
-      toPrint += `\n- ${item}`;
-    });
-  } else {
-    toPrint += getCheckedLabel(provider);
-  }
+async function reload() {
+	console.log("Reloading...");
 
-  console.log(toPrint);
-}
+	// Clear data
+	feedData.splice(0, feedData.length);
 
-/**
- * Get string that shows provider tasks as "done".
- */
-function getCheckedLabel(provider: Provider): string {
-  return `${colours.fg.green} [${CHECKMARK}] ${provider.settings.providerName} ${colours.fg.white}`;
+	for (let feed of settings.feeds) {
+		const res: any = await fetch(feed.endpoint).catch((err) => {
+			return { data: [{ message: `Problem connecting to ${feed.endpoint}.` }] };
+		});
+		const json = res.json ? await res.json() : res;
+		const messages = json.data?.map((a) => a.message);
+		feedData.push(...messages);
+	}
+	print();
 }
 
 start();

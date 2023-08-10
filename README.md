@@ -22,11 +22,30 @@ Using Master List providers for tracking on a Rasberry Pi Zero connected to a mo
 
 See printer repo: https://github.com/Zeyber/master-list-printer
 
+## Installation
+
+- Clone or download from [Github](https://github.com/Zeyber/master-list).
+- Install packages with `npm install`.
+
+## Setup
+
+- Install provider(s) with `npm install example-provider --save`.
+- Add provider to `setup.ts` by adding `example: new ExampleProvider()` to the `providerConfig` object.
+  - Example setup in [setup.example.ts](https://github.com/Zeyber/master-list/blob/master/setup.example.ts)
+    - Note: See individual provider libraries to learn how to set up each correctly.
+- Run with `npm start`.
+
 ## Providers
 
 Providers are third-party wrappers that provide a link between an API or website and a Master List application.
 
-### Available Providers
+### Creating Custom Providers
+
+Check out the [core repository](https://github.com/Zeyber/master-list-core) to learn how to create custom providers to use with Master List.
+
+### List of Available Providers
+
+A list of providers created by users for use with Master List.
 
 - [AnkiWeb Flashcard Reminder](https://www.npmjs.com/package/@zeyber/master-list-anki-provider) - Informs when and which flashcards are due for revision.
 - [Facebook Messenger Unreads](https://www.npmjs.com/package/@zeyber/master-list-facebook-provider) - See which contacts have unread messages.
@@ -34,40 +53,3 @@ Providers are third-party wrappers that provide a link between an API or website
 - [Google Gmail/Calendar/Tasks](https://www.npmjs.com/package/@zeyber/master-list-google-provider) - Check unread emails, upcoming events or due tasks.
 - [Instagram Unreads](https://www.npmjs.com/package/@zeyber/master-list-instagram-provider) - See which contacts have unread messages.
 - [System Details](https://www.npmjs.com/package/@zeyber/master-list-system-provider) - Check system details like time, date, CPU and RAM usage.
-
-## Installation
-
-Download from [Github](https://github.com/Zeyber/master-list) or [NPM](https://www.npmjs.com/package/master-list).
-
-## Setup
-
-- Install provider(s) with `npm install example-provider --save`.
-- Add provider to `setup.ts` by adding `example: new ExampleProvider()` to the `providerConfig` object.
-- Run with `npm start`.
-
-### Example config.ts setup with different types of providers.
-
-```
-export const providerConfig: ProviderConfig = {
-
-  // Simple provider with no options
-  example: new ExampleProvider(),
-
-  // Provider requiring credentials
-  example2: new ExampleProvider2({
-      user: process.env.username,
-      password: process.env.password
-  })
-
-  // Provider requiring authentication token
-  example3: new ExampleProvider3({
-      token: process.env.token
-  })
-
-  // Provider with other customizations
-  example4: new ExampleProvider4({
-      funMode: true
-  })
-
-};
-```

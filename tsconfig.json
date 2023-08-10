@@ -1,15 +1,16 @@
 {
-    "compilerOptions": {
-        "target": "es5",
-        "module": "commonjs",
-        "sourceMap": true,
-        "outDir": "./dist",
-        "declaration": true
-    },
-    "exclude": [
-        "node_modules",
-        "dist",
-        "setup.ts",
-        "setup.example.ts"
-    ]
+	"compilerOptions": {
+		"target": "es5",
+		"module": "commonjs",
+		"sourceMap": true,
+		"outDir": "./dist",
+		"declaration": true,
+		"paths": {
+			"~": ["./"]
+		},
+		"resolveJsonModule": true,
+		"allowSyntheticDefaultImports": true,
+		"esModuleInterop": true
+	},
+	"exclude": ["node_modules", "dist", "setup.ts", "setup.example.ts"]
 }
