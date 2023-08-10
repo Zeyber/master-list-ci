@@ -1,21 +1,26 @@
 {
   "name": "master-list",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "main": "index.ts",
   "scripts": {
     "start": "ts-node ./src/main.ts",
     "start:no-check": "TS_NODE_FILES=true TS_NODE_TRANSPILE_ONLY=true ts-node ./src/main.ts",
     "serve": "node ./dist/main.js",
-    "build": "tsc",
-    "prepublish": "npm run build"
+    "build": "tsc"
   },
   "types": "dist/index.d.ts",
   "author": "Caine Rotherham",
   "license": "ISC",
   "dependencies": {
-    "@master-list/core": "^0.1.0"
+    "@zeyber/master-list-facebook-provider": "^0.2.0",
+    "@zeyber/master-list-github-provider": "^0.2.0",
+    "@zeyber/master-list-google-provider": "^0.2.0",
+    "@zeyber/master-list-whatsapp-provider": "^0.2.0",
+    "dotenv": "^16.3.1",
+    "rxjs": "^7.8.1"
   },
   "devDependencies": {
+    "prettier": "^2.8.8",
     "ts-node": "^9.1.1",
     "typescript": "^4.2.4"
   }
