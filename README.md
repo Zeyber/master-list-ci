@@ -50,12 +50,13 @@ It is up to the feed developer to host a service that delivers the required info
 #### Pre-made Feeds
 A list of feeds created by users for use with Master List.
 
-- [AnkiWeb Flashcard Reminder](https://www.npmjs.com/package/@zeyber/master-list-anki-provider) - Informs when and which flashcards are due for revision.
+- [Slack Unreads](https://github.com/Zeyber/master-list-slack-feed) - See which threads have unread messages.
 - [Facebook Messenger Unreads](https://www.npmjs.com/package/@zeyber/master-list-facebook-provider) - See which contacts have unread messages.
+- [Whatsapp Unreads](https://github.com/Zeyber/master-list-whatsapp-provider) - See which contacts have unread messages.
+- [Microsoft Teams Unreads](https://github.com/Zeyber/master-list-microsoft-teams-feed) - See which contacts have unread messages.
+- [Microsoft Outlook Unreads](https://github.com/Zeyber/master-list-microsoft-outlook-feed) - Check inbox for unread emails.
 - [Github Issue Tracking](https://www.npmjs.com/package/@zeyber/master-list-github-provider) - See which open issues are currently assigned to you.
 - [Google Gmail/Calendar/Tasks](https://www.npmjs.com/package/@zeyber/master-list-google-provider) - Check unread emails, upcoming events or due tasks.
-- [Instagram Unreads](https://www.npmjs.com/package/@zeyber/master-list-instagram-provider) - See which contacts have unread messages.
-- [System Details](https://www.npmjs.com/package/@zeyber/master-list-system-provider) - Check system details like time, date, CPU and RAM usage.
 
 #### Add your feed to `settings.json`
 - Open `setup.json` in your editor.
